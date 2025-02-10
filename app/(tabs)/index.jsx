@@ -1,5 +1,7 @@
-import { View, Text, StyleSheet ,Button,TextInput } from 'react-native'
+import { View, StyleSheet} from 'react-native'
 import React from 'react'
+import Inputgoal from './inputgoal';
+import Goals from './goalview';
 
 const style = StyleSheet.create({
   container:{
@@ -8,83 +10,39 @@ const style = StyleSheet.create({
     
 
   },
-  goal_input :
-  {
-    display :'flex',
-    alignItems : 'center',
-    flexDirection:'row',
-    marginTop :20,
-    paddingLeft:20,
-    paddingRight :20,
+  
  
-
-
-  },
-  text_input:{
-    borderWidth :2,
-    borderRadius :10,
-    borderColor :'black',
-    borderStyle :'solid',
-    padding :10,
-    fontSize :16,
-    flex:4,
-
-  },
-  button_container : {
-    flex:1,
-    marginLeft : 50,
-    borderRadius :10
-
-  },
-  goals_container:
-  {
-    borderTopColor: 'black',
-    borderTopWidth: 2,
-    padding :20,
-    marginTop :20,
-   
-
-  }
-
 });
-
-
-
-
-
-
-
-
 
 
 const app = () => {
 
 
 const [goalarray,setgoalarray]= React.useState([]);
-const [goalinput,setgoalinput]= React.useState('');
+const [goalinput,setgoalinput]= React.useState({});
+const [goalid, setgoalid] = React.useState(0);
 
 function addhandler(goal){
-  setgoalarray(goalarray => [...goalarray,goal]);
+  setgoalid(goalid+1);
+  setgoalarray(goalarray => [...goalarray,{id :goalid , text : goal}]);
 }
 function textinputhandler(text) {
   setgoalinput(text);
   
 }
-const goal = goalarray.map(val => <Text key={val}>{val}</Text>)
+
   return (
     <View style={style.container}> 
-     <View style={style.goal_input}>
-      <TextInput placeholder='Add goals her........' style={style.text_input} onChangeText={textinputhandler} >   </TextInput>
-      <View style={style.button_container} >
-      <Button  title='Add' onPress={() => addhandler(goalinput)}/>
-      </View>
-      
-     </View>
-     <View style={style.goals_container}>
-      <Text> My Goals :  </Text>
-      <View>{goal}</View>
+
+
+    <Inputgoal  textinputhandler = {textinputhandler}  
+    addhandler = {addhandler}
+    goalinput = {goalinput}
+    />
      
-     </View>
+    <Goals   
+    goalarray = {goalarray}
+    />
      
     </View>
     
