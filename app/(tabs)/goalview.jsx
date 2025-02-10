@@ -55,7 +55,9 @@ export default function Goals(props) {
           return (
             
               <View key={goalitem.item} style={style.goal}>
-              <Pressable style={(press) => [ press.pressed && style.stylepressed ] }>
+              <Pressable style={(press) => [ press.pressed && style.stylepressed ] }
+                onPress={props.deletehandler.bind(this , goalitem.item.id)}
+                >
               <Text style={style.goal_text}> {goalitem.item.text} </Text>
               </Pressable>
               

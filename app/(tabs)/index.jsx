@@ -30,6 +30,9 @@ function textinputhandler(text) {
   setgoalinput(text);
   
 }
+function deletehandler(id){
+  setgoalarray(goalarray.filter(goal => goal.id !== id));
+}
 
   return (
     <View style={style.container}> 
@@ -42,6 +45,8 @@ function textinputhandler(text) {
      
     <Goals   
     goalarray = {goalarray}
+    deletehandler = {deletehandler}
+    
     />
      
     </View>
