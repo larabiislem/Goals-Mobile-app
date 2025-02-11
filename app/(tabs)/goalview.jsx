@@ -6,8 +6,9 @@ const style = StyleSheet.create({
 
     goals_container:
   {
-    backgroundColor:'#CFFAFA',
+    backgroundColor:'#E895FF',
     height : '80%' ,
+    width :'85%',
     padding :20,
     margin: 20,
     borderRadius :30
@@ -26,7 +27,7 @@ const style = StyleSheet.create({
     
     color :'black',
     margin :5,
-    backgroundColor :'#FCFFC4',
+    backgroundColor :'#EFDCFF',
   
     borderRadius :6,
     borderWidth :1,

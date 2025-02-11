@@ -6,10 +6,21 @@ import Goals from './goalview';
 const style = StyleSheet.create({
   container:{
     display:'flex',
-    flexDirection:'column',
-    
+    alignItems :"center",
+  
+    height :'100%'
 
   },
+  add_new_goals :{
+    backgroundColor : '#CDC3FF',
+    padding : 10,
+    width:200,
+   
+    marginTop:30,
+    borderRadius:10
+
+
+  }
   
  
 });
@@ -19,14 +30,17 @@ const app = () => {
 
 
 const [goalarray,setgoalarray]= React.useState([]);
-const [goalinput,setgoalinput]= React.useState({});
+const [goalinput,setgoalinput]= React.useState('');
 const [goalid, setgoalid] = React.useState(0);
 const [isvisible,setisvisible ]= React.useState(false);
 
 
 function addhandler(goal){
+  if (goal) {
   setgoalid(goalid+1);
   setgoalarray(goalarray => [...goalarray,{id :goalid , text : goal}]);
+  }
+  
   setisvisible(false);
 }
 
@@ -51,7 +65,11 @@ function Addgoalshandller() {
   return (
     <View style={style.container}> 
 
-    <Button title='Add New Goals' onPress={Addgoalshandller}/>
+    <View  style={style.add_new_goals}>
+    <Button title='Add New Goals' onPress={Addgoalshandller} color='black'/>
+
+    </View>
+    
     <Inputgoal  textinputhandler = {textinputhandler}  
     addhandler = {addhandler}
     cancel={cancel}
